@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kursach Messenger</title>
+  <link rel="icon" type="image/svg+xml" href="/logo/Logo%20Kursach.svg">
+  <link rel="apple-touch-icon" href="/logo/Logo%20Kursach.png">
+  <link rel="stylesheet" href="/static/css/styles.css?v=18">
+</head>
+<body>
+  <button id="themeToggle" class="secondary theme-toggle" type="button" aria-label="Переключить тему">Светлая тема</button>
+
+  <main id="appScreen" class="app" aria-label="Kursach Messenger">
+    <aside class="sidebar">
+      <div class="sidebar-topbar">
+        <div class="brand-mark">
+          <img src="/logo/Logo%20Kursach.svg" alt="">
+        </div>
+        <div>
+          <div class="app-name">Kursach</div>
+          <div class="app-subtitle">Social messenger</div>
+        </div>
+        <button id="logoutBtn" class="icon-button logout-button" type="button" title="Выйти" aria-label="Выйти">⎋</button>
+      </div>
+
+      <div class="profile-card">
+        <div id="meAvatar" class="avatar"></div>
+        <div class="profile-copy">
+          <div id="meName" class="current-user"></div>
+          <div class="presence-line">
+            <span class="status-dot"></span>
+            <span id="wsStatus">Подключение...</span>
+          </div>
+          <button id="mePublicId" class="profile-id" type="button" title="Скопировать ID">ID: ...</button>
+          <div id="meEmail" class="status"></div>
+        </div>
+        <button id="avatarBtn" class="icon-button avatar-button" type="button" title="Сменить аватар" aria-label="Сменить аватар">✦</button>
+        <input id="avatarInput" class="hidden" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
+      </div>
+
+      <div class="find-user">
+        <button id="toggleFindUserBtn" class="find-user-toggle" type="button">Найти пользователя</button>
+        <div id="findUserPanel" class="find-user-panel hidden">
+          <div class="find-user-row">
+            <input id="findUserIdInput" maxlength="8" placeholder="Введите ID">
+            <button id="findUserBtn" class="icon-button" type="button" title="Найти" aria-label="Найти">⌕</button>
+          </div>
+          <div id="findUserResult" class="find-user-result"></div>
+        </div>
+      </div>
+
+      <div class="create-group">
+        <button id="toggleCreateGroupBtn" class="find-user-toggle" type="button">Создать группу</button>
+      </div>
+
+      <div class="search-shell">
+        <span class="search-icon">⌕</span>
+        <input id="contactSearch" type="search" placeholder="Поиск контактов">
+      </div>
+
+      <div class="section-heading">
+        <h1>Сообщения</h1>
+      </div>
+
+      <div id="userList" class="users"></div>
+    </aside>
+
+    <section class="chat">
+      <div class="ambient-grid" aria-hidden="true"></div>
+
+      <header class="chat-title">
+        <button id="backToContactsBtn" class="icon-button back-to-contacts" type="button" aria-label="Назад к контактам">‹</button>
+        <div id="chatPeerAvatar" class="user-avatar chat-peer-avatar">?</div>
+        <div class="chat-heading">
+          <span id="chatTitle" class="chat-title-text">Выберите собеседника</span>
+        </div>
+        <button id="addGroupMembersBtn" class="add-members-button hidden" type="button">+ Участники</button>
+      </header>
+
+      <div id="typingIndicator" class="typing-indicator"></div>
+      <div id="messages" class="messages"></div>
+      <div id="messageMenu" class="message-menu hidden"></div>
+      <button id="scrollToBottomBtn" class="scroll-bottom hidden" type="button" title="В конец переписки" aria-label="В конец переписки">↓</button>
+      <div id="dropOverlay" class="drop-overlay">Отпустите файл, чтобы прикрепить изображение</div>
+      <div id="chatError" class="error chat-error"></div>
+
+      <form id="messageForm" class="composer hidden">
+        <div id="replyPreview" class="reply-preview hidden">
+          <div>
+            <strong>Ответ</strong>
+            <span id="replyPreviewText"></span>
+          </div>
+          <button id="clearReplyBtn" class="reply-clear" type="button" aria-label="Отменить ответ">×</button>
+        </div>
+        <button id="attachImageBtn" class="icon-button attach-button" type="button" title="Прикрепить файл" aria-label="Прикрепить файл">＋</button>
+        <input id="messageImageInput" class="hidden" type="file">
+        <div class="composer-input">
+          <input id="messageText" maxlength="2000" placeholder="Напишите сообщение...">
+        </div>
+        <button class="icon-button emoji-button" type="button" title="Эмодзи" aria-label="Эмодзи">☺</button>
+        <button class="send-button" type="submit" title="Отправить" aria-label="Отправить">➜</button>
+      </form>
+    </section>
+
+    <div id="groupModal" class="modal-backdrop hidden">
+      <form id="createGroupPanel" class="group-modal">
+        <div class="modal-title-row">
+          <div>
+            <h2>Создать группу</h2>
+            <p>Выберите участников из контактов</p>
+          </div>
+          <button id="closeGroupModalBtn" class="icon-button" type="button" aria-label="Закрыть">×</button>
+        </div>
+
+        <label for="groupTitleInput">Название</label>
+        <input id="groupTitleInput" maxlength="80" placeholder="Например, Команда курсача">
+
+        <div class="group-avatar-row">
+          <button id="groupAvatarBtn" class="secondary" type="button">Аватар группы</button>
+          <span id="groupAvatarName" class="group-avatar-name">Не выбран</span>
+        </div>
+        <input id="groupAvatarInput" class="hidden" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
+
+        <div class="modal-section-title">Участники</div>
+        <div id="groupMembersList" class="group-members-list"></div>
+
+        <div id="createGroupMessage" class="find-user-result"></div>
+
+        <div class="modal-actions">
+          <button id="cancelGroupBtn" class="secondary" type="button">Отмена</button>
+          <button class="add-contact-button" type="submit">Создать</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="addMembersModal" class="modal-backdrop hidden">
+      <form id="addMembersPanel" class="group-modal">
+        <div class="modal-title-row">
+          <div>
+            <h2>Добавить участников</h2>
+            <p>Выберите людей из контактов</p>
+          </div>
+          <button id="closeAddMembersModalBtn" class="icon-button" type="button" aria-label="Закрыть">×</button>
+        </div>
+
+        <div id="addMembersList" class="group-members-list"></div>
+        <div id="addMembersMessage" class="find-user-result"></div>
+
+        <div class="modal-actions">
+          <button id="cancelAddMembersBtn" class="secondary" type="button">Отмена</button>
+          <button class="add-contact-button" type="submit">Добавить</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="/static/js/shared.js?v=18"></script>
+  <script src="/static/js/messenger.js?v=19"></script>
+</body>
+</html>

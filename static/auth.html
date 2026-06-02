@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kursach Messenger</title>
+  <link rel="icon" type="image/svg+xml" href="/logo/Logo%20Kursach.svg">
+  <link rel="apple-touch-icon" href="/logo/Logo%20Kursach.png">
+  <link rel="stylesheet" href="/static/css/styles.css?v=3">
+</head>
+<body>
+  <button id="themeToggle" class="secondary theme-toggle" type="button">Светлая тема</button>
+
+  <main id="authScreen" class="auth">
+    <section class="brand" aria-label="Логотип приложения">
+      <img class="brand-logo" src="/logo/Logo%20Kursach.svg" alt="Kursach">
+      <h1 class="brand-title">Kursach Messenger</h1>
+      <p class="brand-subtitle">Личный чат для общения пользователей</p>
+    </section>
+
+    <section class="auth-card">
+      <div class="auth-tabs">
+        <button id="showLoginBtn" class="auth-tab active" type="button">Вход</button>
+        <button id="showRegisterBtn" class="auth-tab" type="button">Регистрация</button>
+      </div>
+
+      <form id="loginForm">
+        <h1>Войти</h1>
+        <label for="loginEmail">Почта</label>
+        <input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
+
+        <label for="loginPassword">Пароль</label>
+        <input id="loginPassword" type="password" autocomplete="current-password" required>
+
+        <div class="auth-actions">
+          <button type="submit">Войти</button>
+          <button id="forgotBtn" class="link" type="button">Забыли пароль?</button>
+        </div>
+      </form>
+
+      <form id="registerForm" class="hidden">
+        <h1>Регистрация</h1>
+        <label for="registerEmail">Почта</label>
+        <input id="registerEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
+
+        <label for="registerUsername">Никнейм</label>
+        <input id="registerUsername" autocomplete="username" placeholder="например, ivan" required>
+
+        <label for="registerPassword">Пароль</label>
+        <input id="registerPassword" type="password" autocomplete="new-password" placeholder="минимум 4 символа" required>
+
+        <div class="auth-actions">
+          <button type="submit">Создать аккаунт</button>
+        </div>
+      </form>
+
+      <form id="forgotForm" class="hidden">
+        <h1>Восстановление пароля</h1>
+        <p class="hint">Введите почту аккаунта. Если SMTP настроен, код придет письмом.</p>
+
+        <label for="forgotEmail">Почта</label>
+        <input id="forgotEmail" type="email" autocomplete="email" required>
+
+        <div class="auth-actions">
+          <button type="submit">Получить код</button>
+          <button class="link" type="button" data-screen="login">Назад ко входу</button>
+        </div>
+      </form>
+
+      <form id="resetForm" class="hidden">
+        <h1>Новый пароль</h1>
+        <label for="resetEmail">Почта</label>
+        <input id="resetEmail" type="email" autocomplete="email" required>
+
+        <label for="resetCode">Код восстановления</label>
+        <input id="resetCode" autocomplete="one-time-code" required>
+
+        <label for="resetPassword">Новый пароль</label>
+        <input id="resetPassword" type="password" autocomplete="new-password" required>
+
+        <div class="auth-actions">
+          <button type="submit">Сменить пароль</button>
+          <button class="link" type="button" data-screen="login">Назад ко входу</button>
+        </div>
+      </form>
+
+      <p id="authMessage" class="hint"></p>
+      <p id="fileWarning" class="hint hidden">Страница открыта как файл. Запустите сервер и откройте http://127.0.0.1:8000</p>
+    </section>
+  </main>
+
+  <script src="/static/js/shared.js?v=3"></script>
+  <script src="/static/js/auth.js?v=3"></script>
+</body>
+</html>
+
+

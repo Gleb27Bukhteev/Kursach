@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 950 1063.39">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#_Безымянный_градиент_62);
+      }
+
+      .cls-2 {
+        fill: #f5f4f9;
+        font-family: HyperBlobRegular, 'Hyper Blob';
+        font-size: 1108.86px;
+      }
+    </style>
+    <linearGradient id="_Безымянный_градиент_62" data-name="Безымянный градиент 62" x1="171.7" y1="19.27" x2="778.3" y2="1069.93" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#36a9e1"/>
+      <stop offset="1" stop-color="#7fffeb"/>
+    </linearGradient>
+  </defs>
+  <rect class="cls-1" y="69.6" width="950" height="950" rx="115.52" ry="115.52"/>
+  <text class="cls-2" transform="translate(152.17 943.64) scale(1.05 1)"><tspan x="0" y="0">K</tspan></text>
+</svg>

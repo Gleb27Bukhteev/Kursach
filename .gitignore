@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
+uvicorn_*.log
+
+# Database dumps/backups
+*.backup
+*.sql
+
+# Local env files
+.env
+.env.*
+
+# Uploaded user files
+static/uploads/
+
+# OS files
+Thumbs.db
+.DS_Store
